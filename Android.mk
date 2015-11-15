@@ -1,4 +1,5 @@
-#set TARGET_USES_HARDWARE_QCOM_GPS to false to disable this project.
+ifneq ($(USE_DEVICE_SPECIFIC_GPS),true)
+# TODO:  Find a better way to separate build configs for ADP vs non-ADP devices
 
 ifeq ($(TARGET_USES_HARDWARE_QCOM_GPS),)
   ifneq ($(filter sdm845 sdm710, $(TARGET_BOARD_PLATFORM)),)
@@ -47,5 +48,4 @@ ifeq ($(TARGET_USES_HARDWARE_QCOM_GPS),true)
 
   endif #BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE
 endif
-
-endif
+endif #USE_DEVICE_SPECIFIC_GPS
